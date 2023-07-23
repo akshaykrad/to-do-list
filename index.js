@@ -38,9 +38,9 @@ function addTask(event){
 	const deadline = document.getElementById('dateTime').value;
 	let dueDate;
     if(!deadline){
-        dueDate = new Date(new Date().getDate() + 1).toLocaleString();
+        dueDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
     }else{
-        dueDate = new Date(deadline).toLocaleString();
+        dueDate = new Date(deadline);
     }
 	const subtasks = [];
 	const newTask = taskSchema(idCounter,taskIp,descIp,priority,dueDate,category,subtasks);
@@ -150,18 +150,27 @@ cancelBtn.addEventListener('click',e=>{
 	addTaskBtn.classList.remove("hide-div");
 });
 
-function extractDueDate(todoText) {
+function extractDate(todoText) {
 	// Define regular expressions to match different date and time formats
-	const dateTimePatterns = [
+	const dateRegex = [
 	  /\b(?:tomorrow|today)\b/i,
 	  /\b(\d{1,2}(?:st|nd|rd|th)?)\s+([a-zA-Z]+)\s+(\d{2,4})\b/i, // e.g., 13th Jan 2023
 	  /\b(\d{1,2}(?:st|nd|rd|th)?)\s+([a-zA-Z]+)\s+(\d{2,4})\s+(\d{1,2}):(\d{2})\s*([ap]m)?\b/i, // e.g., 13th Jan 2023 3 pm
 	];
   
 	let dueDate = null;
-	for (const pattern of dateTimePatterns) {
+	for (const pattern of dateRegex) {
 	  const match = todoText.match(pattern);
+	  console.log(match);
 	  if (match) {
+		if(match[0]=='tomorrow'){
+			dueDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+			break;
+		}
+		else if(match[0]=='today'){
+			dueDate = new Date();
+			break;
+		}
 		let day = parseInt(match[1], 10);
 		const month = match[2];
 		const year = parseInt(match[3], 10);
@@ -183,7 +192,6 @@ function extractDueDate(todoText) {
 	return dueDate;
   }
   
-
 function getMonthNumber(month) {
 	const monthNames = [
 	'jan', 'feb', 'mar', 'apr', 'may', 'jun',
@@ -195,16 +203,13 @@ function getMonthNumber(month) {
 
 function schemaDraw(event){
 	let description = event.description;
-	let dueDate = extractDueDate(description);
+	let dueDate = extractDate(description);
 	if(dueDate){
 		dueDate = dueDate.toLocaleString();
 	}
 	if(!dueDate){
 		dueDate = event.dueDate;
 	}
-	
-
-
 	let outputString = 
 	`
 	<div id="task-${event.id}" class="task-add-box">
@@ -218,7 +223,7 @@ function schemaDraw(event){
 				<strong>Category</strong>: ${event.category}
 			</div>
 			<div>
-			<strong>Due date</strong>: ${dueDate}
+			<strong>Due date</strong>: ${dueDate.toLocaleString()}
 			</div>
 			<!-- <div>
 				<button class="reminder feature">Reminder</button>
@@ -249,12 +254,6 @@ searchIp.addEventListener('keypress',e=>{
 		showSearch();
 	}
 });
-
-
-
-
-
-
 
 function renderTasks(){
 	taskBox.innerHTML = "";
