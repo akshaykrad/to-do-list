@@ -1,0 +1,194 @@
+body {
+	font-family: var(--font);
+	background-color: var(--color-4);
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--color-1: #78c1f3;
+	--color-2: #9be8d8;
+	--color-3: #e2f6ca;
+	--color-4: #f8fdcf;
+	--font: "Roboto", sans-serif;
+}
+.main-container {
+	box-sizing: border-box;
+	width: 80%;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+	display: flex;
+	flex-direction: column;
+	/* align-items: center; */
+}
+.main-container h1 {
+	align-self: flex-start;
+}
+
+.task-card {
+	position: relative;
+	padding: 2px 16px;
+	font-size: 24px;
+	box-sizing: border-box;
+	margin: 10px 0;
+	border: var(--color-2) 0.8px solid;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+	flex-grow: 20;
+}
+.edit-btn{
+	width: 55px;
+	height: 30px;
+	margin: 0 3px;
+}
+.del-btn{
+	width: 55px;
+	height: 30px;
+	margin: 0 3px;
+}
+
+.btn-addTask{
+	align-self: flex-start;
+	background-color: #28a745;
+	color: white;
+	height: 30px;
+	width: 90px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+.task-container{
+	border: var(--color-1) 16px solid ;
+	width: 100%;
+	padding: 10px 0 0 10px;
+	margin: 10px 0;
+}
+.taskBox{
+	margin: 10px 0;
+	width: 100%;
+	padding: 0 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.task-add-box{
+	width: 70%;
+	position: relative;
+	padding: 2px 16px;
+	font-size: 24px;
+	box-sizing: border-box;
+	margin: 10px 0;
+	border: var(--color-2) 0.8px solid;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.hide-div{
+	display: none;
+}
+.expand{
+	height: 160px;
+}
+.btn-cancel{
+	background-color: #dc3545;
+	color: white;
+	height: 30px;
+	width: 90px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	margin: 0 5px;
+}
+.btn{
+	background-color: #dc3545;
+	color: white;
+	height: 30px;
+	width: 90px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	margin: 0 1px;
+}
+.btn-edit{
+	background-color: #28a745;
+}
+.btn-mark{
+
+	background-color: #0d6efd;
+	color: white;
+	height: 30px;
+	width: 120px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	margin: 0 2px 0 0;
+}
+.input{
+	height: 30px;
+	margin: 5px 0;
+	width: 100%;
+	outline: none;
+	border: none;
+	background-color: var(--color-4);
+}
+
+.task-ip{
+	font-size: 24px;
+}
+.desc-ip{
+	font-size: 16px;
+}
+.extra-features{
+	font-size: 20px;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+.feature{
+	background-color: var(--color-3);
+	height: 30px;
+	width: 90px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	margin: 0 2px;
+}
+.imp-btn{
+	display: flex;
+	/* justify-content: end; */
+}
+.priority{
+	position: relative;
+}
+.dropDown{
+	position: absolute;
+	background-color: white;
+	float:center;
+	width: 110px;
+	margin: 5px 2px;
+	z-index: 10;
+	border-radius: 4px;
+}
+.dropDown-content{
+	display: flex;
+	flex-direction: row;
+	font-size: 14px;
+	justify-content: center;
+	margin: 2px;
+	text-align: center;
+}
+.dropDown-content:hover{
+	cursor: pointer;
+	background-color: var(--color-4);
+}
+.checkBtn{
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+.search-ip{
+	outline: none;
+}
