@@ -87,10 +87,13 @@ function markU(e){
 }
 
 function save(e){
-	console.log(e.target);
 	let targetId = e.target.id.slice(5);
-	tasks[targetId].title = document.getElementById(`title-${targetId}`).value;
-	tasks[targetId].description = document.getElementById(`desc-${targetId}`).value;
+	for(let i = 0; i<tasks.length; i++){
+        if(tasks[i].id == targetId){
+			tasks[i].title = document.getElementById(`title-${targetId}`).value;
+			tasks[i].description = document.getElementById(`desc-${targetId}`).value;
+		}
+    }
 	localStorage.setItem('tasks',JSON.stringify(tasks));
 }
 
